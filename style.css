@@ -1,0 +1,815 @@
+/* =========================================================
+   STYLE.CSS
+   Project: Kero Sun geopolitical risk analyst portfolio
+   Direction: Bloomberg-inspired + modern intelligence tech
+   ========================================================= */
+
+/* =========================================================
+   1. BASIC RESET
+   Removes browser default spacing and makes sizing easier.
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   2. DESIGN SYSTEM
+   These are reusable colours, spacing values, fonts, and shadows.
+   Change these variables to quickly redesign the whole site.
+   ========================================================= */
+:root {
+  --bg: #05080d;
+  --bg-elevated: #0b111a;
+  --bg-card: rgba(15, 23, 34, 0.88);
+  --bg-card-soft: rgba(18, 28, 42, 0.72);
+
+  --text: #f4f6f8;
+  --text-muted: #aab6c5;
+  --text-soft: #76869a;
+
+  --line: rgba(148, 163, 184, 0.18);
+  --line-strong: rgba(148, 163, 184, 0.32);
+
+  --blue: #3b82f6;
+  --blue-soft: #93c5fd;
+  --cyan: #22d3ee;
+  --ivory: #f5f0e8;
+  --amber: #f5c542;
+
+  --max-width: 1180px;
+  --nav-height: 76px;
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 30px 90px rgba(0, 0, 0, 0.48);
+
+  --font-body: Inter, Arial, Helvetica, sans-serif;
+  --font-display: "Space Grotesk", Inter, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* =========================================================
+   3. GLOBAL PAGE STYLE
+   This controls the whole website background, font and text.
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.65;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.22), transparent 28%),
+    radial-gradient(circle at 85% 5%, rgba(34, 211, 238, 0.1), transparent 26%),
+    linear-gradient(180deg, #05080d 0%, #07111d 48%, #05080d 100%);
+  overflow-x: hidden;
+}
+
+/* Subtle grid/terminal texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at 50% 12%, black, transparent 70%);
+  z-index: -1;
+}
+
+/* =========================================================
+   4. REUSABLE CONTAINER
+   Keeps content aligned and readable on wide screens.
+   ========================================================= */
+.container {
+  width: min(92%, var(--max-width));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   5. NAVIGATION BAR
+   Professional dark glass navigation inspired by tech sites.
+   ========================================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background: rgba(5, 8, 13, 0.72);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.logo span {
+  color: var(--cyan);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 650;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(148, 163, 184, 0.12);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   6. HERO SECTION
+   Big editorial opening section.
+   ========================================================= */
+.hero {
+  position: relative;
+  padding: clamp(78px, 10vw, 130px) 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  align-items: center;
+  gap: clamp(36px, 6vw, 78px);
+}
+
+.hero__copy {
+  max-width: 760px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  padding: 8px 12px;
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero__badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+}
+
+.hero__title {
+  margin-bottom: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line--accent {
+  color: transparent;
+  background: linear-gradient(110deg, var(--ivory), var(--blue-soft), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero__lead {
+  max-width: 680px;
+  color: var(--text-muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.8;
+  margin-bottom: 34px;
+}
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+  list-style: none;
+}
+
+.hero__tags li {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.035);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Optional hero panel used on homepage */
+.hero__panel {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 34, 0.94), rgba(8, 13, 22, 0.96));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.hero__panel-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero__panel-live {
+  color: #86efac;
+}
+
+.hero__stat {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.hero__stat:last-child {
+  border-bottom: 0;
+}
+
+.hero__stat-label {
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero__stat-value {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.hero__stat-value--alert {
+  color: var(--amber);
+}
+
+/* =========================================================
+   7. BUTTONS
+   Modern tech-style buttons.
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 750;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  color: #041018;
+  background: linear-gradient(135deg, var(--cyan), var(--blue-soft), var(--ivory));
+  box-shadow: 0 16px 40px rgba(34, 211, 238, 0.18);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 20px 52px rgba(34, 211, 238, 0.25);
+}
+
+.btn--ghost {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+}
+
+.btn--ghost:hover {
+  border-color: rgba(34, 211, 238, 0.42);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+/* =========================================================
+   8. SECTIONS
+   Reusable spacing and heading styles.
+   ========================================================= */
+.section {
+  padding: clamp(72px, 9vw, 110px) 0;
+}
+
+.section__header {
+  max-width: 820px;
+  margin-bottom: 42px;
+}
+
+.section__eyebrow {
+  margin-bottom: 12px;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section__title {
+  margin-bottom: 18px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.section__intro {
+  max-width: 700px;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   9. CARD GRID
+   Used for reports, capabilities and expertise sections.
+   ========================================================= */
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(17, 26, 38, 0.92), rgba(10, 15, 24, 0.92));
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.7), transparent);
+  opacity: 0.42;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(34, 211, 238, 0.36);
+  box-shadow: var(--shadow-hover);
+}
+
+.glass-card__icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.07);
+}
+
+.glass-card__title {
+  margin-bottom: 14px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.glass-card__text {
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.72;
+}
+
+.glass-card__text strong {
+  color: var(--blue-soft);
+}
+
+/* =========================================================
+   10. STAT CARDS / DASHBOARD ELEMENTS
+   Keeps your original intelligence-dashboard feeling.
+   ========================================================= */
+.stats {
+  padding: 0 0 70px;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.stat-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 34, 0.82);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-card__value {
+  margin-bottom: 8px;
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+}
+
+.stat-card__label {
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dashboard__panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: rgba(8, 13, 22, 0.78);
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard__toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dashboard__toolbar-label,
+.dashboard__toolbar-status {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dashboard__toolbar-label {
+  color: var(--cyan);
+}
+
+.dashboard__toolbar-status {
+  color: #86efac;
+}
+
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.threat-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 34, 0.78);
+}
+
+.threat-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.threat-card__icon {
+  color: var(--cyan);
+}
+
+.threat-card__status {
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.threat-card__title {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.threat-card__text,
+.threat-card__meter-label {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.threat-card__meter {
+  height: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.threat-card__meter-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+/* =========================================================
+   11. ABOUT PAGE
+   Styles about page grids and biography content.
+   ========================================================= */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+}
+
+.about__text p {
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.about__list {
+  margin-top: 22px;
+  list-style: none;
+}
+
+.about__list li {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+.about__list li::before {
+  content: "— ";
+  color: var(--cyan);
+}
+
+.about__card dl {
+  display: grid;
+  gap: 18px;
+}
+
+.about__card dt {
+  margin-bottom: 4px;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.about__card dd {
+  color: var(--text);
+}
+
+/* =========================================================
+   12. CONTACT PAGE
+   Styles contact information and forms.
+   ========================================================= */
+.contact__wrap {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 30px;
+}
+
+.contact__details {
+  color: var(--text-muted);
+}
+
+.contact__form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  background: rgba(5, 8, 13, 0.7);
+  font: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.1);
+}
+
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* =========================================================
+   13. FOOTER
+   Clean dark footer.
+   ========================================================= */
+.footer {
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  background: rgba(5, 8, 13, 0.86);
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+}
+
+.footer__copy {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  list-style: none;
+}
+
+.footer__links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer__links a:hover {
+  color: var(--cyan);
+}
+
+/* =========================================================
+   14. RESPONSIVE DESIGN
+   Makes the website work on tablets and phones.
+   ========================================================= */
+@media (max-width: 920px) {
+  .hero__inner,
+  .about__grid,
+  .contact__wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .features__grid,
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    height: auto;
+    padding: 16px 0;
+  }
+
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+  }
+
+  .features__grid,
+  .stats__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 72px 0;
+  }
+
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .footer .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

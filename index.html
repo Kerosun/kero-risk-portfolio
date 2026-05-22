@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--
+  DOCTYPE: tells the browser "this is a modern HTML5 page."
+  Always keep this as the first line.
+-->
+<html lang="en">
+  <!-- lang="en" = page language (helps screen readers and search). -->
+
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <!--
+      HEAD = backstage area. Nothing here is drawn on the page directly,
+      except what CSS styles apply to the body and sections below.
+    -->
+    <meta charset="UTF-8" />
+    <!-- UTF-8 = supports most letters and symbols worldwide. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport = makes the layout scale nicely on phones. -->
+
+    <title>Global Risk & Crisis Intelligence</title>
+    <!-- Text shown in the browser tab. -->
+
+    <!--
+      Font pairing (needs internet on first load):
+      Syne = cinematic display headlines
+      DM Sans = clean, readable body text
+      JetBrains Mono = futuristic labels & UI captions
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  
+  <body>
+    <!--
+      BODY = everything visitors see.
+      Structure: layered background (.bg-scene) → shell (nav + main + footer)
+    -->
+
+    <!--
+      Background scene: stacked layers only (no text). aria-hidden = decorative.
+      Each .bg-layer is styled in CSS — together they create depth & atmosphere.
+    -->
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-layer bg-layer--base"></div>
+      <div class="bg-layer bg-layer--gradient"></div>
+      <div class="bg-layer bg-layer--aurora"></div>
+      <div class="bg-layer bg-layer--map"></div>
+      <div class="bg-layer bg-layer--map-glow"></div>
+      <div class="bg-layer bg-layer--grid"></div>
+      <div class="bg-layer bg-layer--vignette"></div>
+    </div>
+
+    <div class="site-shell">
+      <!-- ============================================================
+           NAVIGATION BAR
+           Links jump to sections using id="..." on each section below.
+           ============================================================ -->
+      <header class="navbar">
+        <div class="container">
+          <a class="logo" href="#hero">Kero<span>Sun</span></a>
+          <!-- Logo is an <a> so clicking it scrolls back to the top hero -->
+
+          <nav aria-label="Main navigation">
+            <!-- <nav> groups navigation links for accessibility -->
+            <ul class="nav-links">
+              <li><a class="nav-link" href="ai-analyst-site.html">Home</a></li>
+              <li><a class="nav-link" href="about.html">About</a></li>
+              <li><a class="nav-link" href="reports.html">Reports</a></li>
+              <li><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- ============================================================
+             HERO SECTION — large opening block
+             id="hero" lets nav links scroll here (#hero in the URL)
+             ============================================================ -->
+        <section class="hero" id="hero">
+          <div class="hero__atmosphere" aria-hidden="true">
+            <div class="hero__gradient-wash"></div>
+            <div class="hero__glow hero__glow--a"></div>
+            <div class="hero__glow hero__glow--b"></div>
+          </div>
+
+          <div class="container hero__inner">
+            <div class="hero__copy">
+              <span class="hero__badge">Geopolitical &amp; Crisis Intelligence</span>
+
+              <h1 class="hero__title">
+                <span class="hero__title-line">Where global risk</span>
+                <span class="hero__title-line hero__title-line--accent">becomes clear intelligence</span>
+              </h1>
+
+              <p class="hero__lead">
+                Independent analysis on conflict, political instability, and emerging
+                crises—delivered with discipline, sourcing transparency, and
+                decision-ready clarity for leaders and institutions.
+              </p>
+
+              <ul class="hero__tags">
+                <li>Open-source</li>
+                <li>Unclassified</li>
+                <li>Global coverage</li>
+              </ul>
+
+              <div class="hero__actions">
+                <a class="btn btn--primary" href="#contact">Request briefing</a>
+                <a class="btn btn--ghost" href="#monitoring">View capabilities</a>
+              </div>
+            </div>
+
+            <!-- Side panel: example “dashboard” stats (placeholder content) -->
+            <aside class="hero__panel" aria-label="Sample risk snapshot">
+              <p class="hero__panel-title">
+                Risk snapshot
+                <span class="hero__panel-live">Live</span>
+              </p>
+              <div class="hero__stat">
+                <span class="hero__stat-label">Theaters monitored</span>
+                <span class="hero__stat-value">42</span>
+              </div>
+              <div class="hero__stat">
+                <span class="hero__stat-label">Alert tier</span>
+                <span class="hero__stat-value hero__stat-value--alert">Elevated</span>
+              </div>
+              <div class="hero__stat">
+                <span class="hero__stat-label">Last brief issued</span>
+                <span class="hero__stat-value">48h ago</span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             STATISTIC CARDS (below hero)
+             Structure:
+               <section>  = one grouped block on the page
+               <div class="container"> = centered content column
+               <div class="stats__grid"> = row/column layout for cards
+               <article class="stat-card"> = ONE card (repeat 3 times)
+                 <p class="stat-card__value"> = big number
+                 <p class="stat-card__label"> = short description
+             ============================================================ -->
+        <section class="stats" aria-label="Key performance metrics">
+          <div class="container">
+            <div class="stats__grid">
+              <article class="stat-card">
+                <p class="stat-card__value">120+</p>
+                <p class="stat-card__label">Monitored regions</p>
+              </article>
+
+              <article class="stat-card">
+                <p class="stat-card__value">24/7</p>
+                <p class="stat-card__label">Crisis monitoring</p>
+              </article>
+
+              <article class="stat-card">
+                <p class="stat-card__value">98%</p>
+                <p class="stat-card__label">Alert accuracy</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             GLOBAL THREAT DASHBOARD
+             <section> = major page block with its own id for nav links (#dashboard)
+             <header> = title area · <div class="dashboard__panel"> = UI frame
+             <div class="dashboard__grid"> = card layout · <article> = one threat card
+             ============================================================ -->
+        <section class="section dashboard" id="dashboard">
+          <div class="container">
+            <header class="section__header">
+              <p class="section__eyebrow">Live intelligence</p>
+              <h2 class="section__title">Global Threat Dashboard</h2>
+              <p class="section__intro">
+                A unified view of cross-domain risk signals—updated continuously
+                from open-source reporting, commercial data, and analyst review.
+              </p>
+            </header>
+
+            <div class="dashboard__panel">
+              <div class="dashboard__toolbar">
+                <span class="dashboard__toolbar-label">Threat matrix · Tier-1 domains</span>
+                <span class="dashboard__toolbar-status">Feeds active</span>
+              </div>
+
+              <div class="dashboard__grid">
+                <article class="threat-card threat-card--cyber">
+                  <div class="threat-card__head">
+                    <div class="threat-card__icon" aria-hidden="true">⌬</div>
+                    <span class="threat-card__status">High</span>
+                  </div>
+                  <h3 class="threat-card__title">Cyber threats</h3>
+                  <p class="threat-card__text">
+                    State-linked intrusions, ransomware campaigns, and critical
+                    infrastructure targeting across finance, energy, and comms.
+                  </p>
+                  <p class="threat-card__meter-label">
+                    <span>Risk index</span>
+                    <span>78%</span>
+                  </p>
+                  <div class="threat-card__meter" role="presentation">
+                    <span class="threat-card__meter-fill" style="width: 78%"></span>
+                  </div>
+                </article>
+
+                <article class="threat-card threat-card--geo">
+                  <div class="threat-card__head">
+                    <div class="threat-card__icon" aria-hidden="true">◎</div>
+                    <span class="threat-card__status">Elevated</span>
+                  </div>
+                  <h3 class="threat-card__title">Geopolitical instability</h3>
+                  <p class="threat-card__text">
+                    Elections, sanctions escalations, border tensions, and
+                    elite fragmentation driving sudden policy shifts.
+                  </p>
+                  <p class="threat-card__meter-label">
+                    <span>Risk index</span>
+                    <span>71%</span>
+                  </p>
+                  <div class="threat-card__meter" role="presentation">
+                    <span class="threat-card__meter-fill" style="width: 71%"></span>
+                  </div>
+                </article>
+
+                <article class="threat-card threat-card--supply">
+                  <div class="threat-card__head">
+                    <div class="threat-card__icon" aria-hidden="true">▣</div>
+                    <span class="threat-card__status">Moderate</span>
+                  </div>
+                  <h3 class="threat-card__title">Supply chain disruptions</h3>
+                  <p class="threat-card__text">
+                    Shipping chokepoints, export controls, and logistics bottlenecks
+                    affecting defense, pharma, and semiconductor flows.
+                  </p>
+                  <p class="threat-card__meter-label">
+                    <span>Risk index</span>
+                    <span>64%</span>
+                  </p>
+                  <div class="threat-card__meter" role="presentation">
+                    <span class="threat-card__meter-fill" style="width: 64%"></span>
+                  </div>
+                </article>
+
+                <article class="threat-card threat-card--climate">
+                  <div class="threat-card__head">
+                    <div class="threat-card__icon" aria-hidden="true">◐</div>
+                    <span class="threat-card__status">Rising</span>
+                  </div>
+                  <h3 class="threat-card__title">Climate risks</h3>
+                  <p class="threat-card__text">
+                    Extreme weather, water stress, and migration pressure compounding
+                    instability in coastal and arid regions.
+                  </p>
+                  <p class="threat-card__meter-label">
+                    <span>Risk index</span>
+                    <span>59%</span>
+                  </p>
+                  <div class="threat-card__meter" role="presentation">
+                    <span class="threat-card__meter-fill" style="width: 59%"></span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             GLOBAL RISK MONITORING — feature cards
+             ============================================================ -->
+        <section class="section features" id="monitoring">
+          <div class="container">
+            <header class="section__header">
+              <p class="section__eyebrow">Capabilities</p>
+              <h2 class="section__title">Global Risk Monitoring</h2>
+              <p class="section__intro">
+                Structured intelligence workflows that connect signals, context,
+                and scenario planning—built for fast-moving geopolitical environments.
+              </p>
+            </header>
+
+            <div class="features__grid">
+              <!-- Each article = one feature card -->
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">◎</div>
+                <h3 class="glass-card__title">Conflict &amp; security tracking</h3>
+                <p class="glass-card__text">
+                  Monitor flashpoints, escalation patterns, and force postures
+                  across active and latent conflict zones.
+                </p>
+              </article>
+
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">◈</div>
+                <h3 class="glass-card__title">Political instability indices</h3>
+                <p class="glass-card__text">
+                  Assess governance stress, protest cycles, and elite
+                  fragmentation before markets and media react.
+                </p>
+              </article>
+
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">⬡</div>
+                <h3 class="glass-card__title">Humanitarian &amp; crisis signals</h3>
+                <p class="glass-card__text">
+                  Early indicators on displacement, access constraints, and
+                  compound emergencies affecting civilian populations.
+                </p>
+              </article>
+
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">▣</div>
+                <h3 class="glass-card__title">Scenario &amp; red-team briefs</h3>
+                <p class="glass-card__text">
+                  Structured what-if analysis for leadership teams planning
+                  under uncertainty and information gaps.
+                </p>
+              </article>
+
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">◇</div>
+                <h3 class="glass-card__title">Open-source verification</h3>
+                <p class="glass-card__text">
+                  Cross-check claims, imagery, and social narratives with
+                  disciplined sourcing and confidence grading.
+                </p>
+              </article>
+
+              <article class="glass-card">
+                <div class="glass-card__icon" aria-hidden="true">◉</div>
+                <h3 class="glass-card__title">Executive-ready reporting</h3>
+                <p class="glass-card__text">
+                  Clear, jargon-free summaries designed for briefings, boards,
+                  and editorial deadlines.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             ABOUT THE ANALYST
+             ============================================================ -->
+        <section class="section about" id="about">
+          <div class="container">
+            <header class="section__header">
+              <p class="section__eyebrow">Profile</p>
+              <h2 class="section__title">About Kero Sun</h2>
+            </header>
+
+            <div class="about__grid">
+              <div class="about__text">
+                <p>
+                  I am an independent geopolitical and crisis intelligence analyst
+                  focused on translating complex global events into clear, evidence-based
+                  insight for clients who cannot afford noise.
+                </p>
+                <p>
+                  My work combines open-source methods, regional expertise, and
+                  structured analytical tradecraft—always with explicit confidence
+                  levels and limitations stated upfront.
+                </p>
+
+                <ul class="about__list">
+                  <li>Conflict monitoring &amp; escalation forecasting</li>
+                  <li>Crisis response support for NGOs and media</li>
+                  <li>Custom regional deep dives and oral briefings</li>
+                </ul>
+              </div>
+
+              <aside class="glass-card about__card">
+                <!-- <dl> = definition list: term (dt) + description (dd) pairs -->
+                <dl>
+                  <div>
+                    <dt>Focus regions</dt>
+                    <dd>Indo-Pacific, China, Middle East</dd>
+                  </div>
+                  <div>
+                    <dt>Languages</dt>
+                    <dd>English, Mandarin</dd>
+                  </div>
+                  <div>
+                    <dt>Response time</dt>
+                    <dd>Within 24–48 hours for standard inquiries</dd>
+                  </div>
+                  <div>
+                    <dt>Clearance</dt>
+                    <dd>Open-source only · Unclassified products</dd>
+                  </div>
+                </dl>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT
+             Form is visual-only (pure HTML/CSS). To send email you’d need
+             a backend service or a form provider later.
+             ============================================================ -->
+        <section class="section contact" id="contact">
+          <div class="container">
+            <header class="section__header">
+              <p class="section__eyebrow">Get in touch</p>
+              <h2 class="section__title">Contact</h2>
+            </header>
+
+            <div class="contact__wrap">
+              <div class="contact__info prose">
+                <p class="section__intro">
+                  For briefing requests, media commentary, or institutional
+                  partnerships, send a message outlining your timeline and topic.
+                </p>
+                <p class="contact__details">
+                  <strong>Email:</strong>
+                  analyst@example.com<br />
+                  <strong>Signal:</strong>
+                  Available on request
+                </p>
+              </div>
+
+              <form class="contact__form glass-card" action="#" method="post">
+                <!-- action="#" = placeholder; replace when you connect a real form handler -->
+                <div>
+                  <label class="form-label" for="name">Name</label>
+                  <input class="form-input" type="text" id="name" name="name" required />
+                </div>
+                <div>
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-input" type="email" id="email" name="email" required />
+                </div>
+                <div>
+                  <label class="form-label" for="message">Message</label>
+                  <textarea class="form-textarea" id="message" name="message" required></textarea>
+                </div>
+                <button class="btn btn--primary" type="submit">Send inquiry</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ============================================================
+           FOOTER
+           ============================================================ -->
+      <footer class="footer">
+        <div class="container">
+          <p class="footer__copy">
+            © 2026 RiskIntel Analyst · All analysis is open-source &amp; unclassified
+          </p>
+          <ul class="footer__links">
+            <li><a href="#hero">Top</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#monitoring">Monitoring</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
